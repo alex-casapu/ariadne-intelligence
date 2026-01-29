@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sicurezza & Compliance - Ariadne Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for compliance page */
+
+        .compliance-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-slate) 100%);
+        }
+
+        .compliance-hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .compliance-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .compliance-hero p {
+            font-size: 1.2rem;
+            color: var(--color-text-dim);
+            line-height: 1.8;
+        }
+
+        /* Risk Table Section */
+        .risk-table-section {
+            padding: 6rem 5%;
+            background: var(--color-dark);
+        }
+
+        .risk-table-container {
+            margin-top: 3rem;
+            overflow-x: auto;
+            background: var(--color-slate);
+            border-radius: 4px;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+        }
+
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .risk-table thead {
+            background: linear-gradient(135deg, var(--color-steel) 0%, var(--color-slate) 100%);
+        }
+
+        .risk-table th {
+            padding: 1.5rem 1.5rem;
+            text-align: left;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--color-accent);
+            border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+        }
+
+        .risk-table td {
+            padding: 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.1);
+            color: var(--color-text-dim);
+            line-height: 1.6;
+            vertical-align: top;
+        }
+
+        .risk-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .risk-table tbody tr:hover {
+            background: rgba(74, 144, 226, 0.05);
+        }
+
+        .risk-level {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .risk-level-1 {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            border: 1px solid rgba(76, 175, 80, 0.4);
+        }
+
+        .risk-level-2 {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+            border: 1px solid rgba(255, 152, 0, 0.4);
+        }
+
+        .risk-level-3 {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.4);
+        }
+
+        .risk-name {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Workplace Safety Section */
+        .safety-section {
+            padding: 6rem 5%;
+            background: var(--color-slate);
+        }
+
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .safety-card {
+            background: var(--color-dark);
+            padding: 2.5rem;
+            border-radius: 2px;
+            border-left: 4px solid var(--color-accent);
+            transition: all 0.3s ease;
+        }
+
+        .safety-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .safety-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .safety-card p {
+            color: var(--color-text-dim);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .safety-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .safety-card li {
+            color: var(--color-text-dim);
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .safety-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        /* Case Study Section */
+        .case-study-section {
+            padding: 6rem 5%;
+            background: var(--color-dark);
+        }
+
+        .case-study-container {
+            background: linear-gradient(135deg, var(--color-slate) 0%, var(--color-steel) 100%);
+            border-radius: 4px;
+            padding: 4rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study-container::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-family: var(--font-display);
+            font-size: 10rem;
+            color: rgba(74, 144, 226, 0.1);
+            line-height: 1;
+        }
+
+        .case-study-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .case-study-label {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .case-study-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .case-study-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-dim);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .case-study-body {
+            color: var(--color-text-dim);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .case-study-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(74, 144, 226, 0.2);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--color-text-dim);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 5%;
+            background: var(--color-steel);
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-highlight {
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 4px solid var(--color-accent);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .stat-highlight h4 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .stat-highlight p {
+            color: var(--color-text-dim);
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .risk-table-container {
+                font-size: 0.85rem;
+            }
+
+            .risk-table th,
+            .risk-table td {
+                padding: 1rem 0.8rem;
+            }
+
+            .case-study-container {
+                padding: 2.5rem;
+            }
+
+            .case-study-metrics {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <img src="logo ariadne.png" alt="Ariadne Intelligence Logo" class="logo">
+            <div class="brand-text">ARIADNE INTELLIGENCE</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tecnologia.html">Tecnologia</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="sicurezza.html">Compliance</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="compliance-hero">
+        <div class="compliance-hero-content">
+            <h1>Sicurezza & Compliance Aziendale</h1>
+            <p>
+                La gestione responsabile dei rischi e la tutela dei lavoratori sono pilastri fondamentali per garantire
+                operazioni sostenibili e conformi alle normative vigenti.
+            </p>
+        </div>
+    </section>
+
+    <!-- Workplace Safety -->
+    <section class="safety-section">
+        <div class="section-header">
+            <div class="section-label">Sicurezza sul Lavoro</div>
+            <h2 class="section-title">Tutela e Benessere dei Dipendenti</h2>
+            <p class="section-subtitle">
+                In qualità di azienda software operante nel settore della logistica strategica, Ariadne Intelligence
+                adotta misure preventive per garantire la sicurezza dei propri dipendenti e ridurre i rischi
+                professionali, in conformità al D.Lgs. 81/2008.
+            </p>
+        </div>
+
+        <div class="safety-grid">
+            <div class="safety-card">
+                <h3>Ambiente di Lavoro Ergonomico</h3>
+                <p>Prevenzione dei rischi legati all'utilizzo prolungato di videoterminali e posture scorrette.</p>
+                <ul>
+                    <li>Postazioni regolabili con sedie ergonomiche certificate</li>
+                    <li>Illuminazione ottimizzata per ridurre affaticamento visivo</li>
+                    <li>Pause regolari programmate ogni 2 ore</li>
+                    <li>Schermi anti-riflesso e supporti per monitor</li>
+                </ul>
+            </div>
+
+            <div class="safety-card">
+                <h3>Formazione Continua</h3>
+                <p>Programmi di aggiornamento periodico su sicurezza, emergenze e gestione dello stress.</p>
+                <ul>
+                    <li>Corso base di sicurezza per tutti i dipendenti</li>
+                    <li>Formazione su procedure di evacuazione</li>
+                    <li>Supporto psicologico per stress lavoro-correlato</li>
+                    <li>Aggiornamenti normativi trimestrali</li>
+                </ul>
+            </div>
+
+            <div class="safety-card">
+                <h3>Sicurezza dei Sistemi</h3>
+                <p>La qualità del software sviluppato impatta direttamente sulla sicurezza degli operatori logistici dei
+                    clienti.</p>
+                <ul>
+                    <li>Testing approfondito pre-rilascio</li>
+                    <li>Controllo qualità multi-livello</li>
+                    <li>Documentazione tecnica completa</li>
+                    <li>Assistenza continua post-vendita</li>
+                </ul>
+            </div>
+
+            <div class="safety-card">
+                <h3>Prevenzione Incendi</h3>
+                <p>Controllo periodico degli impianti e piani di emergenza aggiornati.</p>
+                <ul>
+                    <li>Estintori certificati e verificati ogni 6 mesi</li>
+                    <li>Segnaletica di emergenza conforme</li>
+                    <li>Backup cloud dei dati critici</li>
+                    <li>Drill di evacuazione semestrali</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="section-label" style="color: var(--color-accent);">Contesto Nazionale</div>
+            <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem;">Dati Infortuni sul
+                Lavoro in Italia</h3>
+
+            <div class="stat-highlight">
+                <h4>Gennaio - Luglio 2024</h4>
+                <p>
+                    Si sono verificati <strong>577 incidenti mortali sul lavoro</strong>, di cui 440 in occasione di
+                    lavoro e 137 durante il tragitto casa-lavoro. Rispetto allo stesso periodo del 2023, si registrano
+                    in totale 18 decessi in più, con un aumento del 3,2%.
+                </p>
+            </div>
+
+            <div class="stat-highlight">
+                <h4>Incremento Luglio 2024</h4>
+                <p>
+                    Se si considerano solo i decessi avvenuti in occasione di lavoro, l'incremento a luglio 2024 è stato
+                    del 2,3%, con il numero di vittime che è passato da 430 a 440 rispetto all'anno precedente.
+                </p>
+            </div>
+
+            <p style="margin-top: 2rem; color: var(--color-text-dim); font-size: 0.95rem;">
+                <em>Fonte: INAIL, ISTAT, Ministero del Lavoro - Monitoraggio costante dell'andamento degli infortuni
+                    professionali.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Risk Management Plan -->
+    <section class="risk-table-section">
+        <div class="section-header">
+            <div class="section-label">Piano di Gestione dei Rischi</div>
+            <h2 class="section-title">Matrice dei Rischi Aziendali</h2>
+            <p class="section-subtitle">
+                Identificazione, valutazione e strategie di mitigazione dei principali rischi operativi per Ariadne
+                Intelligence.
+            </p>
+        </div>
+
+        <div class="risk-table-container">
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th style="min-width: 180px;">Rischio</th>
+                        <th style="min-width: 120px;">Livello</th>
+                        <th style="min-width: 250px;">Prevenzione</th>
+                        <th style="min-width: 200px;">Assicurazione</th>
+                        <th style="min-width: 200px;">Altre Opzioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Incendio e Calamità</div>
+                        </td>
+                        <td><span class="risk-level risk-level-2">Livello 2</span></td>
+                        <td>
+                            Controllo periodico degli impianti elettrici, presenza di estintori e segnaletica di
+                            emergenza, piani di evacuazione aggiornati, backup dei dati in cloud e formazione base del
+                            personale sulle procedure di emergenza.
+                        </td>
+                        <td>
+                            Polizza incendio e calamità naturali per uffici e attrezzature informatiche.
+                        </td>
+                        <td>
+                            Smart working in caso di emergenza, server esterni e piani di continuità operativa.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Infortuni sul Lavoro</div>
+                        </td>
+                        <td><span class="risk-level risk-level-1">Livello 1</span></td>
+                        <td>
+                            Postazioni ergonomiche, sedie e scrivanie regolabili, pause regolari, formazione sulla
+                            sicurezza, controllo degli ambienti di lavoro e riduzione dello stress lavorativo.
+                        </td>
+                        <td>
+                            Assicurazione obbligatoria INAIL per i dipendenti e polizza integrativa per infortuni
+                            extra-professionali.
+                        </td>
+                        <td>
+                            Programmi di welfare aziendale, visite mediche periodiche e supporto psicologico per stress
+                            lavoro-correlato.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Cyber Risk</div>
+                        </td>
+                        <td><span class="risk-level risk-level-3">Livello 3</span></td>
+                        <td>
+                            Firewall avanzati, crittografia dei dati, backup giornalieri, autenticazione a due fattori,
+                            aggiornamenti costanti dei sistemi e formazione del personale contro phishing e attacchi
+                            informatici.
+                        </td>
+                        <td>
+                            Polizza cyber risk per copertura di danni informatici, furto dati, blocco dei sistemi e
+                            responsabilità verso clienti.
+                        </td>
+                        <td>
+                            Penetration test periodici, audit di sicurezza esterni e piano di risposta agli incidenti
+                            informatici.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Danni a Terzi</div>
+                        </td>
+                        <td><span class="risk-level risk-level-3">Livello 3</span></td>
+                        <td>
+                            Test approfonditi del software prima del rilascio, controllo qualità, documentazione tecnica
+                            chiara e assistenza continua ai clienti.
+                        </td>
+                        <td>
+                            Polizza di responsabilità civile professionale (RC professionale).
+                        </td>
+                        <td>
+                            Contratti con clausole di limitazione della responsabilità e supporto legale specializzato.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Cambiamento nei Gusti dei Consumatori</div>
+                        </td>
+                        <td><span class="risk-level risk-level-1">Livello 1</span></td>
+                        <td>
+                            Analisi periodica del mercato, aggiornamento continuo del software, ascolto dei feedback dei
+                            clienti e monitoraggio delle nuove tecnologie nel settore logistico.
+                        </td>
+                        <td>
+                            Non applicabile
+                        </td>
+                        <td>
+                            Diversificazione dei servizi offerti e investimenti in ricerca e sviluppo.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Furto in Magazzino/Ufficio</div>
+                        </td>
+                        <td><span class="risk-level risk-level-2">Livello 2</span></td>
+                        <td>
+                            Sistemi di allarme, videosorveglianza negli uffici, tracciamento dei dispositivi aziendali,
+                            armadi blindati per apparecchiature e controllo accessi.
+                        </td>
+                        <td>
+                            Polizza furto e rapina per beni aziendali e apparecchiature informatiche.
+                        </td>
+                        <td>
+                            Crittografia dei dati sui dispositivi rubati e possibilità di blocco remoto.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Perdita Quote di Mercato</div>
+                        </td>
+                        <td><span class="risk-level risk-level-2">Livello 2</span></td>
+                        <td>
+                            Miglioramento continuo del prodotto, assistenza clienti efficiente, prezzi competitivi e
+                            investimenti in marketing digitale.
+                        </td>
+                        <td>
+                            Non applicabile
+                        </td>
+                        <td>
+                            Partnership strategiche e ampliamento delle funzionalità del software.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="risk-name">Blackout e Interruzioni</div>
+                        </td>
+                        <td><span class="risk-level risk-level-3">Livello 3</span></td>
+                        <td>
+                            Gruppi di continuità (UPS), server cloud ridondanti, backup automatici e sistemi di
+                            monitoraggio delle infrastrutture IT.
+                        </td>
+                        <td>
+                            Polizza per interruzione dell'attività (business interruption).
+                        </td>
+                        <td>
+                            Data center alternativi e possibilità di lavoro da remoto.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="case-study-section">
+        <div class="section-header">
+            <div class="section-label">Case Study</div>
+            <h2 class="section-title">Gestione di un Evento Critico</h2>
+            <p class="section-subtitle">
+                Analisi approfondita di un caso reale che evidenzia l'importanza delle misure preventive e assicurative.
+            </p>
+        </div>
+
+        <div class="case-study-container">
+            <div class="case-study-content">
+                <span class="case-study-label">Studio di Caso</span>
+                <h3 class="case-study-title">Incidente sul Lavoro: Intossicazione Alimentare in Ambiente Corporate</h3>
+                <p class="case-study-subtitle">
+                    Un'analisi delle conseguenze dirette e indirette di un evento dannoso specifico accaduto all'impresa
+                </p>
+
+                <div class="case-study-body">
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Scenario:</strong> Durante una pausa pranzo aziendale presso la mensa interna, una
+                        coppia di ragazzi di 17,5 anni (figli di dipendenti in visita per una giornata di orientamento)
+                        rimane intossicata da uno dei cibi della colazione serviti dalla cucina aziendale.
+                    </p>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Danno Diretto:</strong> La perdita economica immediatamente imputabile all'evento
+                        dannoso include: rimborso delle cure per l'intossicazione, oltre al danno dovuto alla forzata
+                        interruzione della normale vita dei soggetti intossicati (perdita di giorni scolastici, disagio
+                        fisico, spese mediche).
+                    </p>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Danno Indiretto:</strong> La perdita, anche di lunga durata nel tempo, dovuta a un
+                        eventuale passaparola negativo che danneggia la reputazione aziendale. Si diffonde la percezione
+                        che il cibo fornito dall'azienda sia di scarsa qualità o non sicuro, con conseguenze sulla
+                        fiducia dei dipendenti e sulla reputazione esterna.
+                    </p>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Protezione Assicurativa Attivata:</strong> Polizza di responsabilità civile verso terzi
+                        (RC Generale) che copre i danni fisici causati a soggetti esterni durante attività aziendali,
+                        inclusi visitatori e familiari dei dipendenti.
+                    </p>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Misure di Prevenzione Implementate:</strong> A seguito dell'incidente, l'azienda ha
+                        implementato controlli qualità più stringenti sulla fornitura dei pasti, audit periodici dei
+                        fornitori di catering, e ha istituito un protocollo di tracciabilità alimentare completo. È
+                        stata inoltre attivata una campagna di comunicazione trasparente verso dipendenti e stakeholder.
+                    </p>
+                </div>
+
+                <div class="case-study-metrics">
+                    <div class="metric">
+                        <div class="metric-value">€45K</div>
+                        <div class="metric-label">Danno Diretto</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">~€120K</div>
+                        <div class="metric-label">Danno Indiretto Stimato</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">100%</div>
+                        <div class="metric-label">Copertura Assicurativa</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-highlight" style="margin-top: 3rem;">
+            <h4>Riflessioni e Azioni Future</h4>
+            <p>
+                Questo caso evidenzia l'importanza di una strategia integrata di gestione del rischio che combini
+                prevenzione, assicurazione e comunicazione efficace. L'azienda ha appreso che la protezione
+                assicurativa, pur essenziale, deve essere accompagnata da misure preventive concrete e da un piano di
+                crisis management per minimizzare i danni reputazionali a lungo termine.
+            </p>
+        </div>
+
+        <div class="stat-highlight">
+            <h4>Valutazione dell'Efficacia delle Misure</h4>
+            <p>
+                <strong>Cosa ha funzionato:</strong> La polizza RC ha coperto interamente i danni diretti. Il protocollo
+                di comunicazione trasparente ha limitato la diffusione di voci negative.<br><br>
+                <strong>Cosa è mancato:</strong> Controlli preventivi più rigorosi sulla filiera alimentare avrebbero
+                potuto prevenire completamente l'incidente. La mancanza di un piano di crisis communication iniziale ha
+                causato un ritardo nella gestione reputazionale.<br><br>
+                <strong>Cambiamenti strategici implementati:</strong> Audit trimestrale dei fornitori, implementazione
+                di un sistema di tracciabilità HACCP, formazione del personale su gestione emergenze alimentari, e
+                creazione di un team dedicato alla gestione della reputazione aziendale.
+            </p>
+        </div>
+    </section>
+
+    <!-- Conclusions -->
+    <section class="tech-cta">
+        <h2>Profili di Vulnerabilità e Protezione</h2>
+        <p style="max-width: 900px; margin: 0 auto 3rem;">
+            L'analisi dei rischi evidenzia che per Ariadne Intelligence i rischi puri più probabili sono legati a
+            <strong>cyber security, danni a terzi e interruzione operativa</strong>. I rischi imprenditoriali principali
+            riguardano invece i <strong>cambiamenti tecnologici rapidi e la competizione nel mercato B2G</strong>.
+        </p>
+        <div class="cta-group">
+            <a href="index.html" class="btn btn-primary">Torna alla Home</a>
+            <a href="tecnologia.html" class="btn btn-secondary">Scopri la Tecnologia</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ariadne Intelligence. Incubata presso I3P - Politecnico di Torino.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;">
+            Ariadne Intelligence è un'azienda immaginaria. Progetto realizzato nell'ambito dell'iniziativa UNIPOLEOS.
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

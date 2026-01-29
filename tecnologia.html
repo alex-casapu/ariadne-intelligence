@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia - Ariadne Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles specific to technology page */
+
+        .tech-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-slate) 100%);
+        }
+
+        .tech-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(74, 144, 226, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 144, 226, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .tech-hero-content {
+            max-width: 1000px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tech-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-hero p {
+            font-size: 1.3rem;
+            color: var(--color-text-dim);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Architecture Diagram Section */
+        .architecture-section {
+            padding: 6rem 5%;
+            background: var(--color-dark);
+        }
+
+        .architecture-diagram {
+            background: linear-gradient(135deg, var(--color-slate) 0%, var(--color-steel) 100%);
+            border-radius: 4px;
+            padding: 4rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diagram-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .layer {
+            background: rgba(10, 15, 26, 0.6);
+            border-left: 4px solid var(--color-accent);
+            padding: 2rem 2.5rem;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .layer:hover {
+            transform: translateX(10px);
+            border-left-width: 6px;
+            box-shadow: 0 10px 40px rgba(74, 144, 226, 0.15);
+        }
+
+        .layer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .layer-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .layer-badge {
+            background: var(--color-accent);
+            color: var(--color-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .layer-description {
+            color: var(--color-text-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .layer-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(74, 144, 226, 0.15);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            color: var(--color-text);
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(74, 144, 226, 0.25);
+            border-color: var(--color-accent);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--color-slate);
+            padding: 2.5rem;
+            border-radius: 2px;
+            border: 1px solid rgba(74, 144, 226, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent) 0%, transparent 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(74, 144, 226, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: rgba(74, 144, 226, 0.3);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .feature-card p {
+            color: var(--color-text-dim);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-specs {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-specs li {
+            color: var(--color-text-dim);
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-specs li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        /* Data Sources Section */
+        .data-sources {
+            padding: 6rem 5%;
+            background: var(--color-slate);
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .source-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--color-dark);
+            border-radius: 2px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .source-item:hover {
+            border-color: rgba(74, 144, 226, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .source-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--color-accent-dim) 0%, var(--color-accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .source-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--color-text);
+        }
+
+        .source-item p {
+            color: var(--color-text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Security Section */
+        .security-section {
+            padding: 6rem 5%;
+            background: var(--color-dark);
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .security-card {
+            background: linear-gradient(135deg, var(--color-slate) 0%, var(--color-steel) 100%);
+            padding: 3rem;
+            border-radius: 2px;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .security-card:hover::after {
+            opacity: 1;
+        }
+
+        .security-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .security-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .security-card p {
+            color: var(--color-text-dim);
+            line-height: 1.7;
+            position: relative;
+            z-index: 10;
+        }
+
+        .security-list {
+            list-style: none;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .security-list li {
+            color: var(--color-text-dim);
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.1);
+        }
+
+        .security-list li:last-child {
+            border-bottom: none;
+        }
+
+        .security-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .tech-cta {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--color-slate) 0%, var(--color-steel) 100%);
+            text-align: center;
+        }
+
+        .tech-cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-cta p {
+            font-size: 1.2rem;
+            color: var(--color-text-dim);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .security-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .architecture-diagram {
+                padding: 2rem;
+            }
+
+            .layer {
+                padding: 1.5rem;
+            }
+
+            .layer-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <img src="logo ariadne.png" alt="Ariadne Intelligence Logo" class="logo">
+            <div class="brand-text">ARIADNE INTELLIGENCE</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tecnologia.html">Tecnologia</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="tech-hero">
+        <div class="tech-hero-content">
+            <h1>Ariadne OS</h1>
+            <p>
+                Un'architettura tecnologica avanzata che integra intelligenza artificiale, analisi geospaziale e
+                crittografia militare per garantire operazioni umanitarie sicure in ambienti ostili.
+            </p>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture-section">
+        <div class="section-header">
+            <div class="section-label">Architettura</div>
+            <h2 class="section-title">Stack Tecnologico Multilivello</h2>
+            <p class="section-subtitle">
+                Ariadne OS è costruito su un'architettura a strati che garantisce scalabilità, sicurezza e resilienza
+                operativa in scenari critici.
+            </p>
+        </div>
+
+        <div class="architecture-diagram">
+            <div class="diagram-layers">
+                <div class="layer">
+                    <div class="layer-header">
+                        <div class="layer-title">Data Acquisition Layer</div>
+                        <div class="layer-badge">Input</div>
+                    </div>
+                    <p class="layer-description">
+                        Acquisizione e normalizzazione di flussi dati eterogenei da fonti satellitari, OSINT, IoT field
+                        sensors e radio frequency monitoring. Pipeline di ingestione real-time con capacità di
+                        10TB/giorno.
+                    </p>
+                    <div class="layer-tech">
+                        <span class="tech-tag">Copernicus Sentinel API</span>
+                        <span class="tech-tag">Apache Kafka</span>
+                        <span class="tech-tag">PostgreSQL + PostGIS</span>
+                        <span class="tech-tag">Redis Streams</span>
+                        <span class="tech-tag">Telegram MTProto</span>
+                    </div>
+                </div>
+
+                <div class="layer">
+                    <div class="layer-header">
+                        <div class="layer-title">Intelligence Processing Layer</div>
+                        <div class="layer-badge">AI/ML</div>
+                    </div>
+                    <p class="layer-description">
+                        Motore di elaborazione basato su reti neurali convoluzionali per Computer Vision satellitare,
+                        NLP per sentiment analysis di fonti OSINT, e algoritmi di anomaly detection per identificazione
+                        minacce emergenti.
+                    </p>
+                    <div class="layer-tech">
+                        <span class="tech-tag">TensorFlow / PyTorch</span>
+                        <span class="tech-tag">YOLO v8</span>
+                        <span class="tech-tag">Transformer Models</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">Apache Spark MLlib</span>
+                        <span class="tech-tag">Kubernetes GPU Clusters</span>
+                    </div>
+                </div>
+
+                <div class="layer">
+                    <div class="layer-header">
+                        <div class="layer-title">Geospatial Analysis Layer</div>
+                        <div class="layer-badge">Core</div>
+                    </div>
+                    <p class="layer-description">
+                        Engine proprietario di routing adattivo che utilizza algoritmi di pathfinding multicriteriale
+                        (A*, Dijkstra modificato) con pesi dinamici basati su risk scoring real-time. Supporto per
+                        terreni off-road mediante analisi del Digital Elevation Model (DEM).
+                    </p>
+                    <div class="layer-tech">
+                        <span class="tech-tag">GDAL/OGR</span>
+                        <span class="tech-tag">QGIS Processing</span>
+                        <span class="tech-tag">pgRouting</span>
+                        <span class="tech-tag">Mapbox GL JS</span>
+                        <span class="tech-tag">Leaflet</span>
+                        <span class="tech-tag">Custom C++ Algorithms</span>
+                    </div>
+                </div>
+
+                <div class="layer">
+                    <div class="layer-header">
+                        <div class="layer-title">Security & Encryption Layer</div>
+                        <div class="layer-badge">Defense</div>
+                    </div>
+                    <p class="layer-description">
+                        Implementazione di crittografia end-to-end con algoritmi AES-256-GCM e RSA-4096. Zero-knowledge
+                        architecture per dati sensibili. Compliance GDPR, ISO 27001 e NATO RESTRICTED level.
+                    </p>
+                    <div class="layer-tech">
+                        <span class="tech-tag">OpenSSL 3.0</span>
+                        <span class="tech-tag">HashiCorp Vault</span>
+                        <span class="tech-tag">Wireguard VPN</span>
+                        <span class="tech-tag">JWT + OAuth 2.0</span>
+                        <span class="tech-tag">Hardware Security Modules</span>
+                    </div>
+                </div>
+
+                <div class="layer">
+                    <div class="layer-header">
+                        <div class="layer-title">User Interface Layer</div>
+                        <div class="layer-badge">Output</div>
+                    </div>
+                    <p class="layer-description">
+                        Interfacce multi-piattaforma (web, mobile, tactical tablets) con UX ottimizzata per operazioni
+                        in condizioni di stress elevato. Modalità offline-first con sincronizzazione intelligente. Dark
+                        mode nativo per operazioni notturne.
+                    </p>
+                    <div class="layer-tech">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Progressive Web App</span>
+                        <span class="tech-tag">WebGL</span>
+                        <span class="tech-tag">IndexedDB</span>
+                        <span class="tech-tag">Service Workers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="architecture-section">
+        <div class="section-header">
+            <div class="section-label">Funzionalità Core</div>
+            <h2 class="section-title">Capacità Operative Avanzate</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h3>Predictive Threat Modeling</h3>
+                <p>
+                    Modelli predittivi basati su machine learning che analizzano pattern storici, dati meteo, tensioni
+                    geopolitiche e attività social media per anticipare zone di rischio con 48-72h di anticipo.
+                </p>
+                <ul class="feature-specs">
+                    <li>Accuratezza predittiva: 87%</li>
+                    <li>Aggiornamento: ogni 15 minuti</li>
+                    <li>Copertura: 195 paesi</li>
+                    <li>Fonti integrate: 40+ datasets</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h3>Dynamic Route Optimization</h3>
+                <p>
+                    Algoritmo proprietario che calcola percorsi ottimali considerando 15+ parametri simultanei: rischio
+                    sicurezza, condizioni stradali, meteo, traffico, checkpoint militari, zone minate documentate.
+                </p>
+                <ul class="feature-specs">
+                    <li>Calcolo route: <2 secondi</li>
+                    <li>Alternative generate: fino a 5</li>
+                    <li>Ricalcolo automatico in caso di deviazioni</li>
+                    <li>Supporto waypoint multipli</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h3>OSINT Real-Time Monitoring</h3>
+                <p>
+                    Sistema di monitoraggio continuo di 200+ canali Telegram, frequenze radio VHF/UHF, feed Twitter/X
+                    geo-localizzati e report ufficiali. NLP engine estrae informazioni critiche e le correla
+                    geograficamente.
+                </p>
+                <ul class="feature-specs">
+                    <li>Lingue supportate: 12</li>
+                    <li>Latenza media: 45 secondi</li>
+                    <li>Sentiment analysis accuracy: 92%</li>
+                    <li>Alert automatici configurabili</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">04</div>
+                <h3>Satellite Imagery Analysis</h3>
+                <p>
+                    Integrazione diretta con Copernicus Sentinel-1/2 per analisi multispettrale. Computer Vision
+                    identifica cambiamenti infrastrutturali, danni post-disaster, movimento veicoli, deforestazione.
+                </p>
+                <ul class="feature-specs">
+                    <li>Risoluzione: fino a 10m/pixel</li>
+                    <li>Revisit time: 5 giorni</li>
+                    <li>Change detection automatica</li>
+                    <li>Export GeoTIFF/KML</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">05</div>
+                <h3>Offline Operation Mode</h3>
+                <p>
+                    Capacità di funzionamento completo senza connettività internet. Mappe pre-cachate, database locale
+                    sincronizzato, algoritmi di routing eseguiti on-device. Sync automatica al ripristino connessione.
+                </p>
+                <ul class="feature-specs">
+                    <li>Storage mappe: fino a 50GB</li>
+                    <li>Autonomia: illimitata</li>
+                    <li>Batteria ottimizzata: +40% durata</li>
+                    <li>Sincronizzazione differenziale</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">06</div>
+                <h3>Collaborative Intelligence</h3>
+                <p>
+                    Piattaforma collaborativa che permette a operatori sul campo di condividere intelligence in tempo
+                    reale. Sistema di crowd-validation per verificare affidabilità informazioni.
+                </p>
+                <ul class="feature-specs">
+                    <li>Multi-user real-time</li>
+                    <li>Role-based access control</li>
+                    <li>Audit trail completo</li>
+                    <li>Crittografia E2E per comunicazioni</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Sources -->
+    <section class="data-sources">
+        <div class="section-header">
+            <div class="section-label">Fonti Dati</div>
+            <h2 class="section-title">Ecosistema di Intelligence Multicanale</h2>
+            <p class="section-subtitle">
+                Ariadne aggrega e correla dati da oltre 50 fonti eterogenee per fornire una situational awareness
+                completa.
+            </p>
+        </div>
+
+        <div class="sources-grid">
+            <div class="source-item">
+                <div class="source-icon">🛰️</div>
+                <h4>Satelliti ESA/NASA</h4>
+                <p>Sentinel-1/2, Landsat 8/9, MODIS per imagery multispettrale e radar</p>
+            </div>
+
+            <div class="source-item">
+                <div class="source-icon">📡</div>
+                <h4>Radio Frequency</h4>
+                <p>Monitoring VHF/UHF bands per comunicazioni emergenza e military chatter</p>
+            </div>
+
+            <div class="source-item">
+                <div class="source-icon">💬</div>
+                <h4>Social Media OSINT</h4>
+                <p>Telegram, Twitter/X, Facebook gruppi locali con geo-tagging</p>
+            </div>
+
+            <div class="source-item">
+                <div class="source-icon">🌐</div>
+                <h4>News Aggregation</h4>
+                <p>Reuters, AFP, Al Jazeera, BBC e 100+ fonti locali in 20+ lingue</p>
+            </div>
+
+            <div class="source-item">
+                <div class="source-icon">🏛️</div>
+                <h4>UN/NGO Reports</h4>
+                <p>OCHA, WFP, UNHCR situation reports e humanitarian dashboards</p>
+            </div>
+
+            <div class="source-item">
+                <div class="source-icon">🌡️</div>
+                <h4>Weather & Climate</h4>
+                <p>ECMWF, NOAA GFS per previsioni meteo e disaster forecasting</p>
+            </div>
+
+            <div class="source-item">
+                <div class="source-icon">🗺️</div>
+                <h4>OpenStreetMap</h4>
+                <p>Dati cartografici crowd-sourced aggiornati dalla community globale</p>
+            </div>
+
+            <div class="source-item">
+                <div class="source-icon">📊</div>
+                <h4>Conflict Databases</h4>
+                <p>ACLED, GDELT, UCDP per tracking eventi conflittuali</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security -->
+    <section class="security-section">
+        <div class="section-header">
+            <div class="section-label">Sicurezza</div>
+            <h2 class="section-title">Security by Design</h2>
+            <p class="section-subtitle">
+                La sicurezza non è un add-on, è il fondamento dell'architettura di Ariadne OS.
+            </p>
+        </div>
+
+        <div class="security-grid">
+            <div class="security-card">
+                <div class="security-icon">🔐</div>
+                <h3>Crittografia End-to-End</h3>
+                <p>
+                    Tutti i dati in transito e at-rest sono crittografati con standard militari. Nessun dato sensibile
+                    viene mai trasmesso in chiaro.
+                </p>
+                <ul class="security-list">
+                    <li>AES-256-GCM per data-at-rest</li>
+                    <li>TLS 1.3 per comunicazioni</li>
+                    <li>Perfect Forward Secrecy</li>
+                    <li>Key rotation automatica ogni 30 giorni</li>
+                </ul>
+            </div>
+
+            <div class="security-card">
+                <div class="security-icon">🛡️</div>
+                <h3>Zero-Trust Architecture</h3>
+                <p>
+                    Implementazione del principio "never trust, always verify" con autenticazione multi-fattore e
+                    controllo accessi granulare.
+                </p>
+                <ul class="security-list">
+                    <li>MFA obbligatorio per tutti gli utenti</li>
+                    <li>Role-Based Access Control (RBAC)</li>
+                    <li>Session timeout configurabile</li>
+                    <li>IP whitelisting per ambienti critici</li>
+                </ul>
+            </div>
+
+            <div class="security-card">
+                <div class="security-icon">🔍</div>
+                <h3>Audit & Compliance</h3>
+                <p>
+                    Sistema di logging immutabile che traccia ogni operazione. Compliance con GDPR, ISO 27001, SOC 2
+                    Type II.
+                </p>
+                <ul class="security-list">
+                    <li>Audit trail completo di tutte le operazioni</li>
+                    <li>SIEM integration ready</li>
+                    <li>Data retention policy configurabile</li>
+                    <li>Right to be forgotten implementation</li>
+                </ul>
+            </div>
+
+            <div class="security-card">
+                <div class="security-icon">⚡</div>
+                <h3>Incident Response</h3>
+                <p>
+                    Protocolli automatici di detection e response per minacce cybersecurity. Team dedicato 24/7 per
+                    security operations.
+                </p>
+                <ul class="security-list">
+                    <li>Automated threat detection con ML</li>
+                    <li>Incident response time: <15 minuti</li>
+                    <li>DDoS protection multi-layer</li>
+                    <li>Disaster recovery plan testato</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="tech-cta">
+        <h2>Pronto a Scoprire Come Ariadne Può Trasformare le Tue Operazioni?</h2>
+        <p>
+            Richiedi una demo personalizzata o parla con il nostro team tecnico per approfondire le capacità della
+            piattaforma.
+        </p>
+        <div class="cta-group">
+            <a href="index.html#contatti" class="btn btn-primary">Richiedi Demo</a>
+            <a href="index.html" class="btn btn-secondary">Torna alla Home</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ariadne Intelligence. Incubata presso I3P - Politecnico di Torino.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;">
+            Ariadne Intelligence è un'azienda immaginaria. Progetto realizzato nell'ambito dell'iniziativa UNIPOLEOS.
+        </p>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Layer hover effect enhancement
+        document.querySelectorAll('.layer').forEach(layer => {
+            layer.addEventListener('mouseenter', function () {
+                this.style.background = 'rgba(10, 15, 26, 0.8)';
+            });
+            layer.addEventListener('mouseleave', function () {
+                this.style.background = 'rgba(10, 15, 26, 0.6)';
+            });
+        });
+    </script>
+</body>
+
+</html>
